@@ -42,15 +42,7 @@ public partial class Hp : Node2D
 	public float maxHealth=10;
 	public float currentHealth=10;
 	
-   /* public override void _Notification(long what)
-    {
-        if(what == NotificationSceneInstantiated)
-		{
-			this.WireNodes();
-		}
-    }
-	*/
-    // Called when the node enters the scene tree for the first time.
+ 
     public override void _Ready()
 	{
 	CallDeferred(nameof(InitializeHealth));
@@ -65,25 +57,12 @@ public partial class Hp : Node2D
 	{
 		Damage(-heal);
 	}
-	public void SetMaxHealth()
-	{
-		CurrentHealth = MaxHealth;
-	}
+	
 	private void InitializeHealth()
 	{
 		CurrentHealth= MaxHealth;
 	}
-	public void ApplyScaling(Curve curve, float progress)
-	{
-		CallDeferred(nameof(ApplyScalingInternal), curve, progress);
-	}
-	private void ApplyScalingInternal(Curve curve, float progress)
-	{
-		var curveValue = curve.Sample(progress);
-		MaxHealth += 1f + curveValue;
-		CurrentHealth= MaxHealth;
-
-	}
+	
 	public partial class HealthUpdate : RefCounted
 	{
 		public float PreviousHealth;
