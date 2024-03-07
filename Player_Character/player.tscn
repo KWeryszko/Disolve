@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://buwa7swqim8wk"]
+
+[ext_resource type="Script" path="res://Player_Character/player.cs" id="1_1rruv"]
+[ext_resource type="Texture2D" uid="uid://ycw3qjv06t5h" path="res://Player_Character/sczur_p.png" id="3_72yjg"]
+[ext_resource type="PackedScene" uid="uid://defqxe11682tu" path="res://Hp/Hp.tscn" id="3_tup5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it20i"]
+size = Vector2(90, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jt2s5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_72yjg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_1rruv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_it20i")
+
+[node name="animacja_s" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.394419, 0.125003)
+scale = Vector2(0.463592, 0.463592)
+sprite_frames = SubResource("SpriteFrames_jt2s5")
+
+[node name="Hp" parent="." instance=ExtResource("3_tup5a")]
