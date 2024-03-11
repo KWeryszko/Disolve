@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgfibbh1hlbh8"]
+
+[ext_resource type="PackedScene" uid="uid://defqxe11682tu" path="res://Hp/Hp.tscn" id="1_gwcmy"]
+[ext_resource type="Script" path="res://Testy/Hp_test/Label.cs" id="2_eesbu"]
+
+[node name="HpTest" type="Node2D"]
+
+[node name="Hp" parent="." instance=ExtResource("1_gwcmy")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 71.0
+offset_top = 32.0
+offset_right = 236.0
+offset_bottom = 55.0
+script = ExtResource("2_eesbu")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 69.0
+offset_top = 104.0
+offset_right = 177.0
+offset_bottom = 153.0
+text = "Right-damage
+Left-heal"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://oe5plek3xffu"]
+
+[ext_resource type="PackedScene" uid="uid://d0rvdt1rg0ybu" path="res://Attribute/Attribute.tscn" id="1_4qg1n"]
+[ext_resource type="Script" path="res://Testy/Attribute_test/Label_att_test.cs" id="2_g80th"]
+
+[node name="AttributeTest" type="Node2D"]
+
+[node name="Attribute" parent="." instance=ExtResource("1_4qg1n")]
+
+[node name="Label_att_test" type="Label" parent="."]
+offset_left = 142.0
+offset_top = 93.0
+offset_right = 182.0
+offset_bottom = 116.0
+text = "ss"
+script = ExtResource("2_g80th")
