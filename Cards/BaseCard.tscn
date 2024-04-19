@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qn5bhgy0qptj"]
+
+[ext_resource type="Script" path="res://Cards/BaseCard.cs" id="1_l5to8"]
+
+[node name="BaseCard" type="Node2D"]
+script = ExtResource("1_l5to8")

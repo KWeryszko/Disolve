@@ -2,85 +2,64 @@ using Godot;
 
 public partial class Attribute : Node2D
 {
-    [Export]
-    public int StartingAttribute
-    {
-        get => startingAttribute;
-        private set
-        {
-            startingAttribute = value;
-            if (StartingAttribute > startingAttribute)
-            {
-                StartingAttribute = startingAttribute;
-            }
-        }
-    }
-    public int CurrentAttribute
-    {
-        get => CurrentAttribute;
-        private set
-        {
-            var previousAttribute = currentAttribute;
-            currentAttribute = Mathf.Clamp(value, 0, StartingAttribute);
-            var attributeUpdate = new AttributeUpdate
-            {
-                PreviousAttribute = previousAttribute,
-                CurrentAttribute = currentAttribute,
-                StartingAttribute = StartingAttribute,
-                //IsHeal = previousHealth <= currentHealth
-            };
-
-        }
-    }
-    public int startingAttribute = 3;
-    public int currentAttribute = 3;
 
     public override void _Ready()
     {
-        CallDeferred(nameof(InitializeAttribute));
-
+        baseAttribute = startingAttribute;
+        currentAttribute = startingAttribute;
+        if (attributeName == AttributeNames.ActionPoints)   attributeRegeneration = 3;
     }
-    private void InitializeAttribute()
-    {
-        CurrentAttribute = StartingAttribute;
+    [Export]
+    public int StartingAttribute { get => startingAttribute; set => startingAttribute = value;  }
+    [Export]
+    public AttributeNames type { get=>attributeName; set => attributeName = value; }
+    [Export]
+    public int AttributeRegeneration { get => attributeRegeneration; set => attributeRegeneration = value; }
+    public void AddBaseAttribute(int attributeIncrease) { baseAttribute += attributeIncrease; }
+    public void DecreaseBaseAttribute(int attributeDecrease) { if (baseAttribute - attributeDecrease < 0) baseAttribute = 0; else baseAttribute -= attributeDecrease; }
+    public void BuffAttribute(int buff) {
+        if (overflow > buff)
+        {
+            overflow -= buff;
+        }
+        else
+        {
+            currentAttribute += buff-overflow;
+            overflow = 0;
+        }
     }
-    public void AddAttribute()
-    {
-        StartingAttribute++;
-        //startingAttribute = StartingAttribute;
-        CurrentAttribute = StartingAttribute;
-        //currentAttribute = CurrentAttribute;
+    public void DebuffAttribute(int debuff) {
+        if (debuff > currentAttribute)
+        {
+            currentAttribute = 0;
+            overflow += debuff - currentAttribute;
+        }
+        else currentAttribute -= debuff;
     }
-    public void RemoveAttribute()
-    {
-        StartingAttribute--;
-        //startingAttribute = StartingAttribute;
-        CurrentAttribute = StartingAttribute;
-        //currentAttribute = CurrentAttribute;
-    }
-    public void BuffAttribute()
-    {
-        currentAttribute++;
-        //currentAttribute = CurrentAttribute;
-    }
-    public void DebuffAttribute()
-    {
-        currentAttribute--;
-        //currentAttribute = CurrentAttribute;
-    }
-    public void RestoreAttribute()
-    {
-        CurrentAttribute = StartingAttribute;
-        //currentAttribute = CurrentAttribute;
-    }
-    public int getAttribute(){return currentAttribute;}
-    public partial class AttributeUpdate : RefCounted
-    {
-        public int StartingAttribute;
-        public int CurrentAttribute;
-        public int PreviousAttribute;
-    }
+    public void ChangeAttributeRegeneration(int change) { attributeRegeneration += change; }
+    public void RestoreAttribute() { currentAttribute = baseAttribute; } //restores current attribute value to default
+    public void RegenerateAttribute() { currentAttribute += attributeRegeneration; } //changes current attribute value by a set amount at the start of a turn
     
+    //######    getters and setters    #####\\
+    public int getattributeregeneration() { return attributeRegeneration; }
+    public int getcurrentAttribute() { return currentAttribute; }
+    public int getbaseAttribute() { return baseAttribute; }
+    public string getattributeName() { return attributeName.ToString(); }
+    public int getattributeNameValue() { return attributeName.GetHashCode(); }
 
-	
+    //######    data members    ######\\
+    private int currentAttribute;
+    private int baseAttribute;
+    private int startingAttribute=1;
+    private int attributeRegeneration = 0;  //used to add atribute points at the start of a turn
+    private int overflow = 0;               //dodatkowa zmienna zapisujaca na minusie
+    private AttributeNames attributeName;
+    public enum AttributeNames
+    {
+        None = 0,
+        Agility = 1,
+        Strength = 2,
+        Intelligence = 3,
+        ActionPoints= 4
+    }
 }

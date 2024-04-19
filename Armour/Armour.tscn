@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di83323lrkuve"]
+
+[ext_resource type="Script" path="res://Armour/Armour.cs" id="1_qh3e5"]
+
+[node name="Armour" type="Node2D"]
+script = ExtResource("1_qh3e5")
