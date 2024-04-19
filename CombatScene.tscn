@@ -1,0 +1,149 @@
+[gd_scene load_steps=2 format=3 uid="uid://durhnqg2d8rn5"]
+
+[ext_resource type="PackedScene" uid="uid://buwa7swqim8wk" path="res://Player_Character/player.tscn" id="1_vb06e"]
+
+[node name="CombatScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vb06e")]
+position = Vector2(158, 203)
+
+[node name="Player" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(118, 0)
+
+[node name="Player2" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Player3" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(3, 113)
+
+[node name="Player" parent="Player/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(115, 4)
+
+[node name="Player2" parent="Player/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Player3" parent="Player/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(492, 3)
+
+[node name="Player" parent="Player/Player3/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(118, 0)
+
+[node name="Player2" parent="Player/Player3/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player3/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player3/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Enemy" parent="Player/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(843, 8)
+
+[node name="Player" parent="Player/Player3/Enemy" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player4" parent="Player/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(488, -55)
+
+[node name="Enemy" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(354, 118)
+
+[node name="Player" parent="Player/Enemy" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player4" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(-1, 55)
+
+[node name="Player5" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(492, 3)
+
+[node name="Player" parent="Player/Player5" instance=ExtResource("1_vb06e")]
+position = Vector2(118, 0)
+
+[node name="Player2" parent="Player/Player5" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player5/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player5/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Player3" parent="Player/Player5" instance=ExtResource("1_vb06e")]
+position = Vector2(3, 113)
+
+[node name="Player" parent="Player/Player5/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(118, 0)
+
+[node name="Player2" parent="Player/Player5/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player5/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player5/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Player3" parent="Player/Player5/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(-482, 130)
+
+[node name="Player" parent="Player/Player5/Player3/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(118, 0)
+
+[node name="Player2" parent="Player/Player5/Player3/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(114, -58)
+
+[node name="Player" parent="Player/Player5/Player3/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="Player/Player5/Player3/Player3/Player2" instance=ExtResource("1_vb06e")]
+position = Vector2(106, 1)
+
+[node name="Enemy" parent="Player/Player5/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(-131, 135)
+
+[node name="Player" parent="Player/Player5/Player3/Enemy" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player4" parent="Player/Player5/Player3" instance=ExtResource("1_vb06e")]
+position = Vector2(-486, 72)
+
+[node name="Enemy" parent="Player/Player5" instance=ExtResource("1_vb06e")]
+position = Vector2(354, 118)
+
+[node name="Player" parent="Player/Player5/Enemy" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player4" parent="Player/Player5" instance=ExtResource("1_vb06e")]
+position = Vector2(-1, 55)
+
+[node name="Enemy2" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(843, 8)
+
+[node name="Player" parent="Player/Enemy2" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player6" parent="Player" instance=ExtResource("1_vb06e")]
+position = Vector2(488, -55)
+
+[node name="Enemy" parent="." instance=ExtResource("1_vb06e")]
+position = Vector2(509, 208)
+
+[node name="Player" parent="Enemy" instance=ExtResource("1_vb06e")]
+position = Vector2(-24, -57)
+
+[node name="Player2" parent="." instance=ExtResource("1_vb06e")]
+position = Vector2(154, 145)
