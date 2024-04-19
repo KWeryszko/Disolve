@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://buwa7swqim8wk"]
+[gd_scene load_steps=5 format=3 uid="uid://buwa7swqim8wk"]
 
 [ext_resource type="Script" path="res://Player_Character/player.cs" id="1_1rruv"]
 [ext_resource type="Texture2D" uid="uid://ycw3qjv06t5h" path="res://Player_Character/sczur_p.png" id="3_72yjg"]
-[ext_resource type="PackedScene" uid="uid://defqxe11682tu" path="res://Hp/Hp.tscn" id="3_tup5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it20i"]
 size = Vector2(90, 20)
@@ -30,5 +29,3 @@ unique_name_in_owner = true
 position = Vector2(0.394419, 0.125003)
 scale = Vector2(0.463592, 0.463592)
 sprite_frames = SubResource("SpriteFrames_jt2s5")
-
-[node name="Hp" parent="." instance=ExtResource("3_tup5a")]

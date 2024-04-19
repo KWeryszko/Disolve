@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgcklupp33r67"]
+
+[ext_resource type="PackedScene" uid="uid://di83323lrkuve" path="res://Armour/Armour.tscn" id="1_xx4rh"]
+[ext_resource type="Script" path="res://Testy/Armour_test/ArmourTestLabel.cs" id="2_qyj4u"]
+
+[node name="ArmourTest" type="Node2D"]
+
+[node name="Armour" parent="." instance=ExtResource("1_xx4rh")]
+
+[node name="ArmourTestLabel" type="Label" parent="."]
+offset_left = 126.0
+offset_top = 109.0
+offset_right = 166.0
+offset_bottom = 132.0
+script = ExtResource("2_qyj4u")
+
+[node name="ArmourTestExplenation" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 190.0
+offset_right = 269.0
+offset_bottom = 291.0
+text = "left - add armor
+right - deal damage
+down - clear armor
+up - clear spillover damage"

@@ -1,13 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgfibbh1hlbh8"]
 
-[ext_resource type="PackedScene" uid="uid://defqxe11682tu" path="res://Hp/Hp.tscn" id="1_gwcmy"]
-[ext_resource type="Script" path="res://Testy/Hp_test/Label.cs" id="2_eesbu"]
+[ext_resource type="Script" path="res://Testy/Hp_test/HpTestlabel.cs" id="2_eesbu"]
+[ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="2_vj882"]
 
 [node name="HpTest" type="Node2D"]
 
-[node name="Hp" parent="." instance=ExtResource("1_gwcmy")]
-
-[node name="Label" type="Label" parent="."]
+[node name="HpTestlabel" type="Label" parent="."]
 offset_left = 71.0
 offset_top = 32.0
 offset_right = 236.0
@@ -19,5 +17,9 @@ offset_left = 69.0
 offset_top = 104.0
 offset_right = 177.0
 offset_bottom = 153.0
-text = "Right-damage
-Left-heal"
+text = "Right - damage
+Left - heal
+up - add max hp
+down - decrease max hp"
+
+[node name="Hp2" parent="." instance=ExtResource("2_vj882")]

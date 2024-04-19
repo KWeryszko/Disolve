@@ -6,11 +6,21 @@
 [node name="AttributeTest" type="Node2D"]
 
 [node name="Attribute" parent="." instance=ExtResource("1_4qg1n")]
+type = 3
 
 [node name="Label_att_test" type="Label" parent="."]
 offset_left = 142.0
 offset_top = 93.0
 offset_right = 182.0
 offset_bottom = 116.0
-text = "ss"
 script = ExtResource("2_g80th")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 132.0
+offset_top = 146.0
+offset_right = 172.0
+offset_bottom = 169.0
+text = "left - debuff
+right - buff
+up - decrease att
+down - increase att"

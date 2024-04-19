@@ -20,7 +20,7 @@ public partial class player : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
 
-		//OBRACANIE KURWA
+		//OBRACANIE
 		AnimatedSprite2D mysprite = GetNode<AnimatedSprite2D>("animacja_s");
 		if(direction > Vector2.Zero)
 		{

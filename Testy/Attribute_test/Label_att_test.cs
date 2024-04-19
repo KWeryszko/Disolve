@@ -15,23 +15,27 @@ public partial class Label_att_test : Label
 	public override void _Process(double delta)
 	{
         Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-        str = myATT.currentAttribute.ToString();
+        str = myATT.getcurrentAttribute().ToString()+"/"+myATT.getbaseAttribute()+" attname: "+myATT.getattributeName()+myATT.getattributeNameValue();
         Text = str;
         if (direction.X > 0)
         {
-            myATT.AddAttribute();
+           myATT.BuffAttribute(1);
         }
         else if (direction.X < 0)
         {
-            myATT.RemoveAttribute();
+            myATT.DebuffAttribute(1);
         }
         if (direction.Y > 0)
         {
-            myATT.BuffAttribute();
+            myATT.AddBaseAttribute(1);
         }
         else if (direction.Y < 0)
         {
-            myATT.DebuffAttribute();
+            myATT.DecreaseBaseAttribute(1);
+        }
+        if (myATT.getattributeName() =="None")
+        {
+            Text = "grupa 21Inf-SP/b jest gnebiona przez uz i spolecznosc miedzynarodowa ma to gdzies";
         }
     }
     string str;
