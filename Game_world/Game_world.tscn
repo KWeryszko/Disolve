@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbsuf1o55fct"]
+[gd_scene load_steps=3 format=3 uid="uid://bbsuf1o55fct"]
 
 [ext_resource type="PackedScene" uid="uid://buwa7swqim8wk" path="res://Player_Character/player.tscn" id="1_fbdkt"]
+[ext_resource type="Texture2D" uid="uid://dti70jk6w222l" path="res://Game_world/tlo.png" id="1_ly0bd"]
 
 [node name="GameWorld" type="Node2D"]
 
+[node name="Tlo" type="Sprite2D" parent="."]
+position = Vector2(579.942, 334)
+scale = Vector2(0.608175, 0.457233)
+texture = ExtResource("1_ly0bd")
+
 [node name="Player" parent="." instance=ExtResource("1_fbdkt")]
-position = Vector2(89, 36)
+position = Vector2(451, 316)
