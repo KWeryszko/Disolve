@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3 uid="uid://pdvb6be38ht7"]
+
+[ext_resource type="Script" path="res://Cards/CardResource.cs" id="1_l7csi"]
+
+[resource]
+script = ExtResource("1_l7csi")
+ID = 1
+AttackValue = 8
+ArmourValue = 0
+HealValue = 0
+ApCost = 1
+Name = "basic attack"
+AgilityScaling = 1.0
+StrengthScaling = 1.0
+IntelligenceScaling = 1.0
+NextCardsID = PackedInt32Array(2)
+SpecialEffectsID = PackedInt32Array()
+SpecialEffectsValue = PackedInt32Array()
+SpecialEffectsLife = PackedInt32Array()
+SpritePath = "Cards/cardLayout.png"

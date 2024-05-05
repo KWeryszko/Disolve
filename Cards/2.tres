@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3 uid="uid://cy52tdl3pnx4x"]
+
+[ext_resource type="Script" path="res://Cards/CardResource.cs" id="1_bvbua"]
+
+[resource]
+script = ExtResource("1_bvbua")
+ID = 2
+AttackValue = 0
+ArmourValue = 0
+HealValue = 0
+ApCost = 0
+Name = ""
+AgilityScaling = 0.0
+StrengthScaling = 0.0
+IntelligenceScaling = 0.0
+NextCardsID = PackedInt32Array()
+SpecialEffectsID = PackedInt32Array()
+SpecialEffectsValue = PackedInt32Array()
+SpecialEffectsLife = PackedInt32Array()
+SpritePath = ""

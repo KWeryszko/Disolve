@@ -1,67 +1,57 @@
-using Godot;
-using System;
-using System.Collections.Generic;
+ using Godot;
 using System.IO;
+
 
 public partial class BaseCard : Node2D
 {
     [Export]
-    public int AttackValue { get => attackValue; set => attackValue = value; }
-    [Export]
-    public int ArmourValue { get => armourValue; set => armourValue = value; }
-    [Export]
-    public int HealValue { get => healValue; set => healValue = value; }
-    [Export]
-    public int ApCost { get => apCost; set => apCost = value; }
+    public CardResource Stats = new();
     [Export]
     public int ID { get => id; set => id = value; }
-    [Export]
-    public int[] NextCardsID { get => nextCardsID; set => nextCardsID = value; }
-    [Export]
-    public int[] SpecialEffectsID { get => specialEffectsID; set => specialEffectsID = value; }
-    public void ExportCard()
-    {
-        
-        String tempID;
-        if (id < 10) tempID = "00"+id.ToString();
-        else if (id <100) tempID = "0"+id.ToString();
-        else tempID = id.ToString();
-        try
+    public BaseCard() :this(0) { }
+    public BaseCard(int id)
+    {   
+        this.id = id;
+        if (!Stats.ID.Equals(id))
         {
-            StreamReader sr = new StreamReader("//" + tempID + "karta.txt");
-            sr.Close();
-            throw new Exception("Duplicate ID exception");        
+            Stats = GD.Load<CardResource>("res://Cards/" + id.ToString() + ".tres");//path to resource, how to get it to always work? 
         }
-        catch (IOException e)
+    }
+    public override void _Ready()
+    {
+        if (!Stats.ID.Equals(id))
         {
-            //Console.WriteLine(e.ToString());
-            StreamWriter sw = new StreamWriter("//" + tempID + "karta.txt");
-            WriteToFile(sw);
-            sw.Close();
+            Stats = GD.Load<CardResource>("res://Cards/" + id.ToString() + ".tres");//path to resource, how to get it to always work? 
         }
-        
+        if (debug)
+        {
+            GD.Print(Stats);
+        }
+        AddChild(textureRect);
+        textureRect.Texture = ResourceLoader.Load<Texture2D>(Stats.SpritePath);
+        button.Size = new Vector2(100,100);
     }
-    private void WriteToFile(StreamWriter sw)
+    public void Update()
     {
-        sw.WriteLine("cos");
-        sw.Close();
+        if (!Stats.ID.Equals(id))
+        {
+            try { Stats = GD.Load<CardResource>("res://Cards/" + id.ToString() + ".tres"); }
+            catch (IOException) { GD.Print("no card with given id"); id = Stats.ID; }
+        }
     }
-    public void ImportCard()
+    public void ToggleVisibility()
+    {  
+        Visible = !Visible;
+    }
+    public override void _Draw()
     {
-        attackValue = 0;
-        armourValue = 0;
-        healValue = 0;
-        apCost = 0;
-        nextCardsID = new int[0];
-        specialEffectsID = new int[0];
-        //sprite=GetNode<Sprite2D>("path") or =new Sprite2D
+        DrawSetTransform(GlobalPosition = globalPosition);
     }
-    protected int attackValue, armourValue, healValue, apCost, id; // string name?
-    protected double AgilityScaling, StrengthScaling, IntelligenceScaling; //attribute scaling
-    protected int[] nextCardsID;
-    protected List<Effects> specialEffects = new List<Effects>(0);
-    protected int[] specialEffectsID, specialEffectsValue, specialEffectLife;
-    protected string[] specialEffectspath;
-
-    Sprite2D sprite; //GetNode<Sprite2D>("path")
+    public void SetGlobalPosition(Vector2 position) { globalPosition = position; }
+    public void CreateTexture() { }//
+    private int id=0;
+    private bool debug = false;
+    private TextureRect textureRect= new();
+    private Button button=new();
+    Vector2 globalPosition;
 }
