@@ -1,11 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+[GlobalClass]
 
 public abstract partial class BaseEnemy : Node2D //Base class for all enemies 
 {
     //each enemy needs to be a scene with following children:\\
-    //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence)
+    //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence); 6- Attribute(actionpoints)
     [Signal]
     public delegate void CharacterDiedEventHandler(); 
     public override void _Ready() // override ready in children to set cards
@@ -97,6 +98,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         strength = GetChild<Attribute>(3);
         agility = GetChild<Attribute>(4);
         intelligence = GetChild<Attribute>(5);
+        actionPoints=GetChild<Attribute>(6);
     }
     protected void CreateNewAttributes()
     {
@@ -106,6 +108,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         strength = new();
         agility = new();
         intelligence = new();
+        actionPoints=new();
     }
     protected int[] cardIDs;
     protected AnimatedSprite2D sprite;
