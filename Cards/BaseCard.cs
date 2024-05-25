@@ -48,6 +48,7 @@ public partial class BaseCard : Node2D
         DrawSetTransform(GlobalPosition = globalPosition);
     }
     public void SetGlobalPosition(Vector2 position) { globalPosition = position; }
+    public Vector2 GetGlobalPosition() { return globalPosition; }
     public void CreateTexture() { }//
     private int id=0;
     private bool debug = false;

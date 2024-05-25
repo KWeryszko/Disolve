@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcbl1t0vx8k08"]
+
+[ext_resource type="Script" path="res://BattleScene/ReturnCardButton/ReturnCardButton.cs" id="1_61ukb"]
+
+[node name="ReturnCardButton" type="Button"]
+offset_right = 201.0
+offset_bottom = 53.0
+script = ExtResource("1_61ukb")

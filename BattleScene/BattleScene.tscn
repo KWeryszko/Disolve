@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqd5pxxispyo3"]
+
+[ext_resource type="Script" path="res://BattleScene/BattleScene.cs" id="1_8hd7d"]
+[ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_luk0o"]
+[ext_resource type="Script" path="res://BattleScene/NextTurnButton.cs" id="2_n7ihv"]
+[ext_resource type="Script" path="res://BattleScene/TurnCounter.cs" id="4_ogg7a"]
+[ext_resource type="PackedScene" uid="uid://dcbl1t0vx8k08" path="res://BattleScene/ReturnCardButton/ReturnCardButton.tscn" id="5_es87x"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_8hd7d")
+
+[node name="DrawPile" parent="." instance=ExtResource("1_luk0o")]
+
+[node name="Hand" parent="." instance=ExtResource("1_luk0o")]
+
+[node name="DiscardPile" parent="." instance=ExtResource("1_luk0o")]
+
+[node name="NextTurnButton" type="Button" parent="."]
+offset_left = 991.0
+offset_top = 74.0
+offset_right = 1128.0
+offset_bottom = 129.0
+text = "Next Turn"
+script = ExtResource("2_n7ihv")
+
+[node name="TurnCounter" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 60.0
+offset_right = 130.0
+offset_bottom = 83.0
+text = "Turn: "
+script = ExtResource("4_ogg7a")
+
+[node name="ReturnCardButton" parent="." instance=ExtResource("5_es87x")]
+offset_left = 52.0
+offset_top = 207.0
+offset_right = 214.0
+offset_bottom = 260.0
+
+[connection signal="pressed" from="NextTurnButton" to="." method="OnButtonClick"]
