@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk33v3erhj0dl"]
+
+[ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_ea84g"]
+[ext_resource type="Script" path="res://Testy/CardDeck_test/CardDeck_test.cs" id="1_r0pvb"]
+
+[node name="CardDeckTest" type="Node2D"]
+script = ExtResource("1_r0pvb")
+
+[node name="CardDeck" parent="." instance=ExtResource("1_ea84g")]
+position = Vector2(651, 260)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 59.0
+offset_right = 516.0
+offset_bottom = 82.0
+text = "Right- add card 1
+Left - remove card
+up - display card
+down-removeChildren"
