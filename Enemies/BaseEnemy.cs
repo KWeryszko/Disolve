@@ -6,6 +6,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
 {
     //each enemy needs to be a scene with following children:\\
     //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence) 6 - Attribute(AP)
+    //7 - textureprogressbar
     [Signal]
     public delegate void CharacterDiedEventHandler(); 
     public override void _Ready() // override ready in children to set cards
@@ -38,9 +39,14 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         Random random = new();
         return cardIDs[random.Next(cardIDs.Length)];
     }
-    public void ReceiveCardPlayedByOpponet(BaseCard card)//add player stats for scaling? //smth like playerAgl, playerStd, playerInt
-    {
-        hp.Damage(armour.Damage(card.Stats.AttackValue)); //deals damage to armour and excess to hp
+    public void ReceiveCardPlayedByOpponet(BaseCard card, int[] playerStats = null)
+    {   
+        if (playerStats == null) playerStats = new int[] {0,0,0};
+        int damage = 
+             (int)(card.Stats.AttackValue * card.Stats.StrengthScaling * playerStats[0]) +
+            +(int)(card.Stats.AttackValue * card.Stats.AgilityScaling * playerStats[1]) +
+            +(int)(card.Stats.AttackValue * card.Stats.IntelligenceScaling * playerStats[2]);
+        hp.Damage(armour.Damage(damage)); //deals damage to armour and excess to hp
         int effectId;
         for(int i = 0; i < card.Stats.SpecialEffectsID.Length; i++)
         {
@@ -86,10 +92,14 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         }
         //checks if character is alive after receiving damage\\
         if(!hp.IsAlive()) EmitSignal(SignalName.CharacterDied);
+        UpdateHpBar();
 
     }
-    public void ReceiveCardPlayedByOpponet(int cardID)    { ReceiveCardPlayedByOpponet(new BaseCard(cardID));    }// it just works!
 
+    public void ReceiveCardPlayedByOpponet(int cardID, int[] playerStats = null)    { ReceiveCardPlayedByOpponet(new BaseCard(cardID), playerStats);    }// it just works!
+
+    protected void SetHpBar()   {        HPbar.MaxValue = getMaxHP();  HPbar.Value = getMaxHP();  }
+    public void UpdateHpBar() { HPbar.Value = getCurrentHP(); }
     protected void ConnectAttributesToChildren()
     {
         sprite = GetChild<AnimatedSprite2D>(0);
@@ -99,6 +109,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         agility = GetChild<Attribute>(4);
         intelligence = GetChild<Attribute>(5);
         actionPoints = GetChild<Attribute>(6);
+        HPbar = GetChild<TextureProgressBar>(7);
     }
     protected void CreateNewAttributes()
     {
@@ -109,6 +120,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         agility = new();
         intelligence = new();
         actionPoints = new();
+        HPbar = new();
     }
     public int getCurrentHP()//unnecesery if we create label locally
     {
@@ -118,10 +130,15 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
     {
         return hp.getmaxHealth();
     }
+    public int[] getAttributes()
+    {
+        return new int[] { strength.getcurrentAttribute(), agility.getcurrentAttribute(), intelligence.getcurrentAttribute() };
+    }
     protected int[] cardIDs;
     protected AnimatedSprite2D sprite;
     protected HP2 hp;
     protected Armour armour;
     protected Attribute strength, agility, intelligence, actionPoints;
+    protected TextureProgressBar HPbar;
     protected List<Effects> effects = new(0);
 }

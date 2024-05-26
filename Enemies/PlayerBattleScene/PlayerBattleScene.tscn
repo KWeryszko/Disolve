@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://ogivwk0yy5pf"]
+
+[ext_resource type="Script" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.cs" id="1_dawc8"]
+[ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="2_js3pf"]
+[ext_resource type="Texture2D" uid="uid://g328kesyxufj" path="res://Enemies/PlayerBattleScene/Kapi.png" id="2_ym55w"]
+[ext_resource type="PackedScene" uid="uid://di83323lrkuve" path="res://Armour/Armour.tscn" id="3_a2uv0"]
+[ext_resource type="Texture2D" uid="uid://cigvswrjw6jot" path="res://Enemies/PlayerBattleScene/Kapi2.png" id="3_po4fe"]
+[ext_resource type="PackedScene" uid="uid://d0rvdt1rg0ybu" path="res://Attribute/Attribute.tscn" id="4_3gxyw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ub3sg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ym55w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_po4fe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_sd2fk"]
+offsets = PackedFloat32Array(0.988636, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ck4ig"]
+gradient = SubResource("Gradient_sd2fk")
+
+[sub_resource type="Gradient" id="Gradient_8itqq"]
+offsets = PackedFloat32Array(0.363636, 1)
+colors = PackedColorArray(0.745098, 0.25098, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_13ypn"]
+gradient = SubResource("Gradient_8itqq")
+
+[node name="PlayerBattleScene" type="Node2D"]
+script = ExtResource("1_dawc8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(101, 139)
+scale = Vector2(0.0972222, 0.0972222)
+sprite_frames = SubResource("SpriteFrames_ub3sg")
+
+[node name="Hp2" parent="." instance=ExtResource("2_js3pf")]
+StartingHealth = 100
+
+[node name="Armour" parent="." instance=ExtResource("3_a2uv0")]
+
+[node name="Str" parent="." instance=ExtResource("4_3gxyw")]
+
+[node name="Agl" parent="." instance=ExtResource("4_3gxyw")]
+
+[node name="Int" parent="." instance=ExtResource("4_3gxyw")]
+
+[node name="Ap" parent="." instance=ExtResource("4_3gxyw")]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = SubResource("GradientTexture1D_ck4ig")
+texture_progress = SubResource("GradientTexture1D_13ypn")

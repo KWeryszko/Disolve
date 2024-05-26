@@ -7,5 +7,6 @@ public partial class TestEnemy : BaseEnemy
     {
         SelectEnemyCards(new int[] { 1, 2 });
         ConnectAttributesToChildren();
+        SetHpBar();
     }
 }
