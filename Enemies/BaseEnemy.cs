@@ -2,11 +2,10 @@ using Godot;
 using System;
 using System.Collections.Generic;
 [GlobalClass]
-
 public abstract partial class BaseEnemy : Node2D //Base class for all enemies 
 {
     //each enemy needs to be a scene with following children:\\
-    //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence); 6- Attribute(actionpoints)
+    //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence) 6 - Attribute(AP)
     [Signal]
     public delegate void CharacterDiedEventHandler(); 
     public override void _Ready() // override ready in children to set cards
@@ -19,12 +18,10 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
     }
     public override void _Process(double delta)
     {
-        if (!hp.IsAlive())
-        {
-            EmitSignal(SignalName.CharacterDied);
-            GD.Print("AAAAAA I DIED!");  //dying message\\ //maybe send signal?
-        }
-        //add animation
+        //animation player\\
+        if (hp.IsAlive())   sprite.Play();
+        else                sprite.Stop();
+
         
     }
     protected void SelectEnemyCards(int[] cardIDs)
@@ -87,9 +84,12 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
                     break;
             }   
         }
+        //checks if character is alive after receiving damage\\
+        if(!hp.IsAlive()) EmitSignal(SignalName.CharacterDied);
 
     }
     public void ReceiveCardPlayedByOpponet(int cardID)    { ReceiveCardPlayedByOpponet(new BaseCard(cardID));    }// it just works!
+
     protected void ConnectAttributesToChildren()
     {
         sprite = GetChild<AnimatedSprite2D>(0);
@@ -98,7 +98,7 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         strength = GetChild<Attribute>(3);
         agility = GetChild<Attribute>(4);
         intelligence = GetChild<Attribute>(5);
-        actionPoints=GetChild<Attribute>(6);
+        actionPoints = GetChild<Attribute>(6);
     }
     protected void CreateNewAttributes()
     {
@@ -108,7 +108,15 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         strength = new();
         agility = new();
         intelligence = new();
-        actionPoints=new();
+        actionPoints = new();
+    }
+    public int getCurrentHP()//unnecesery if we create label locally
+    {
+        return hp.getcurrentHealth();
+    }
+    public int getMaxHP()
+    {
+        return hp.getmaxHealth();
     }
     protected int[] cardIDs;
     protected AnimatedSprite2D sprite;
