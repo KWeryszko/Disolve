@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class BattleScene : Node2D
 {
@@ -30,6 +31,10 @@ public partial class BattleScene : Node2D
         //ENEMY\\
         enemy = GetChild<BaseEnemy>(7);
         enemy.CharacterDied += DeathsignalReceiver;
+
+        //PLAYER\\
+        player = GetChild<BaseEnemy>(8);
+        player.CharacterDied += DeathsignalReceiver;
 
         turnStart = true;
         turnCounter.AddToCounter();
@@ -65,14 +70,14 @@ public partial class BattleScene : Node2D
             
             GD.Print("TURA WROGA panstwa podziemnego");
             GD.Print(enemy.ChooseCardToPlayC().Stats.ID);
-
+            player.ReceiveCardPlayedByOpponet(enemy.ChooseCardToPlayC(), enemy.getAttributes());
             turnStart = true;
             turnCounter.AddToCounter(); //maybe moove to if(turnstart)
             enemyTurn = false;
-        }
-        
+        }//placeholder
+
         //jezeli nacisniemy guzik konczy sie tura, wszystkie karty ida do DSP
-        
+
     }
     private void OnButtonClick()  //next turn\\
     {
@@ -84,11 +89,6 @@ public partial class BattleScene : Node2D
         hand.EnableButtons();
         enemyTurn = true; //moves on to enemy turn    
     }
-    public void transfertodp(BaseCard card) //Redundant\\
-    {
-        setCardInUse(card);
-        discardPile.AddCard(card);
-    }
     public void setCardInUse(BaseCard cardInUse)
     {
         //creates card to be displayed\\
@@ -96,9 +96,13 @@ public partial class BattleScene : Node2D
         AddChild(cardInUse);
         cardInUse.SetGlobalPosition(new Vector2((1152 / 2) - 50, 100));
         
-        RCB.Visible = true; //shows the return button to visible so it can be clicked\\
+        RCB.Visible = true; //sets the return button to visible so it can be clicked\\
         NTB.Visible = false;
         EB.Visible = true;
+        //savings buttons to buffer and turning them off\\
+        handButtonBuffer=hand.getCurrentActiveButtons();
+        hand.DisableButtons();
+
     }
     private void ReturnCardInUse()
     {
@@ -113,25 +117,30 @@ public partial class BattleScene : Node2D
         EB.Visible=false;
 
         GD.Print("HAND HAS" + hand.getCards().Count);
+        //turning the buttons back on\\
+        hand.ActivateSelectButtons(handButtonBuffer);
         hand.SetLastButtonVisible();
         hand.ShowCards(hand.getCards());
     }
     private void ChooseEnemy()
     {
-        enemy.ReceiveCardPlayedByOpponet(cardInUse);
+        enemy.ReceiveCardPlayedByOpponet(cardInUse, new int[] {1,0,0});//placeholder
         
         discardPile.AddCard(cardInUse);
         RemoveChild(cardInUse);
         RCB.Visible = false;
         NTB.Visible = true;
         EB.Visible = false;
-
+        
         GD.Print("HAND HAS" + hand.getCards().Count);
+        //turning the buttons back on\\
+        hand.ActivateSelectButtons(handButtonBuffer);
     }
     public void DeathsignalReceiver()
     {
         GD.Print("Zostalo mi odebrane jedyne co dla mnie istotne");
     }
+
     CardDeck drawPile, hand, discardPile;
     Button NTB;
     ReturnCardButton RCB;
@@ -139,5 +148,6 @@ public partial class BattleScene : Node2D
     TurnCounter turnCounter;
     private BaseCard cardInUse;
     private bool turnStart=true, enemyTurn;
-    private BaseEnemy enemy;
+    private BaseEnemy enemy, player;
+    private int[] handButtonBuffer;
 }

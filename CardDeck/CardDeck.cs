@@ -203,6 +203,22 @@ public partial class CardDeck : Node2D
             RemoveChild(GetNode(path)); 
         }   
     }
+    public int[] getCurrentActiveButtons() //works a bit weirdly
+    {
+        List<int> activeButtons= new(0);
+        for (int i = 0; i < cards.Count; i++)
+        {
+            activeButtons.Add(i);
+        }
+        return activeButtons.ToArray();
+    }
+    public void ActivateSelectButtons(int[] buttonsToActivate)
+    {
+        foreach (var index in buttonsToActivate)
+        {
+            buttons[index].Visible = true;
+        }
+    }
     public bool IsEmpty() {  return cards.Count == 0; }
     public BaseCard GetCard(int index)
     {
