@@ -40,7 +40,6 @@ public partial class CardDeck : Node2D
     public void AddCard(BaseCard card)
     {
         cards.Add(card);
-        
     }
     public void RemoveCard(int index) 
     {
@@ -130,11 +129,15 @@ public partial class CardDeck : Node2D
     public void Card5ButtonClick()    {        CardButtonClick(4);    }
     private void CardButtonClick(int indx) {
         RemoveChildren();
-        //GetParent<BattleScene>().setCardInUse(cards[indx]);
-        GetNode<BattleScene>(GetPathTo(GetParent())).transfertodp(TransferCard(indx)); //do poprawy
-        
+        GetParent<BattleScene>().setCardInUse(TransferCard(indx));//sets card in the middle of the screen\\
+       // GetNode<BattleScene>(GetPathTo(GetParent())).transfertodp(TransferCard(indx)); //do poprawy
+
         ShowCards(cards);
-        buttons[getCards().Count].Visible=false;
+        buttons[getCards().Count].Visible=false; //turns off the button for the chosen card\\
+    }
+    public void SetLastButtonVisible()
+    {
+        buttons[getCards().Count-1].Visible = true; // can be without -1 but battlescene has to have a change made\\
     }
     public void DisableButtons()
     {
@@ -219,4 +222,5 @@ public partial class CardDeck : Node2D
     List<Action> funkcje=new List<Action>(0);
     private bool debug = true;
     private string[] childPaths;
+    private int lastButton;
 }

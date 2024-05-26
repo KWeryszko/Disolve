@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_l7csi")
 ID = 1
-AttackValue = 8
+AttackValue = 4
 ArmourValue = 0
 HealValue = 0
 ApCost = 1

@@ -19,14 +19,21 @@ public partial class BattleScene : Node2D
         discardPile = GetChild<CardDeck>(2);
         NTB = GetChild<Button>(3);
         turnCounter= GetChild<TurnCounter>(4);
-       
+        //RCB\\
+        RCB = GetChild<ReturnCardButton>(5);
+        RCB.ButtonUp += ReturnCardInUse;
+        RCB.Visible = false;
+        //EB\\
+        EB = GetChild<EnemyButton>(6);
+        EB.ButtonUp += ChooseEnemy;
+        EB.Visible = false;
+        //ENEMY\\
+        enemy = GetChild<BaseEnemy>(7);
+        enemy.CharacterDied += DeathsignalReceiver;
+
         turnStart = true;
         turnCounter.AddToCounter();
 
-        cardInUse = new BaseCard(1);  //Setting up card to be used\\
-        AddChild(cardInUse);
-        cardInUse.SetGlobalPosition(new Vector2((1152 / 2) - 50, 100));
-        cardInUse.Visible = false;
     }
     public override void _Process(double delta)
     {
@@ -52,10 +59,22 @@ public partial class BattleScene : Node2D
             hand.ShowCards(hand.getCards());
             turnStart = false;
         }
+        if (enemyTurn)
+        {
+            
+            
+            GD.Print("TURA WROGA panstwa podziemnego");
+            GD.Print(enemy.ChooseCardToPlayC().Stats.ID);
+
+            turnStart = true;
+            turnCounter.AddToCounter(); //maybe moove to if(turnstart)
+            enemyTurn = false;
+        }
+        
         //jezeli nacisniemy guzik konczy sie tura, wszystkie karty ida do DSP
         
     }
-    private void OnButtonClick()
+    private void OnButtonClick()  //next turn\\
     {
         hand.RemoveChildren();
         while (!hand.IsEmpty())
@@ -63,29 +82,62 @@ public partial class BattleScene : Node2D
             discardPile.AddCard(hand.TransferCard(hand.getCards().Count - 1));
         }
         hand.EnableButtons();
-        turnStart = true;
-        turnCounter.AddToCounter();
-
+        enemyTurn = true; //moves on to enemy turn    
     }
-    public void transfertodp(BaseCard card)
+    public void transfertodp(BaseCard card) //Redundant\\
     {
         setCardInUse(card);
         discardPile.AddCard(card);
     }
     public void setCardInUse(BaseCard cardInUse)
     {
-        this.cardInUse.Visible = true;
+        //creates card to be displayed\\
         this.cardInUse = cardInUse;
-        hand.DisableButtons();
+        AddChild(cardInUse);
+        cardInUse.SetGlobalPosition(new Vector2((1152 / 2) - 50, 100));
+        
+        RCB.Visible = true; //shows the return button to visible so it can be clicked\\
+        NTB.Visible = false;
+        EB.Visible = true;
     }
-    private void TransferCIUToDiscard()
+    private void ReturnCardInUse()
     {
+        hand.RemoveChildren();
+        
+        hand.AddCardById(cardInUse.ID);
+
+        RemoveChild(cardInUse);
+
+        RCB.Visible=false;
+        NTB.Visible = true;
+        EB.Visible=false;
+
+        GD.Print("HAND HAS" + hand.getCards().Count);
+        hand.SetLastButtonVisible();
+        hand.ShowCards(hand.getCards());
+    }
+    private void ChooseEnemy()
+    {
+        enemy.ReceiveCardPlayedByOpponet(cardInUse);
+        
         discardPile.AddCard(cardInUse);
-        cardInUse.Visible = false;
+        RemoveChild(cardInUse);
+        RCB.Visible = false;
+        NTB.Visible = true;
+        EB.Visible = false;
+
+        GD.Print("HAND HAS" + hand.getCards().Count);
+    }
+    public void DeathsignalReceiver()
+    {
+        GD.Print("Zostalo mi odebrane jedyne co dla mnie istotne");
     }
     CardDeck drawPile, hand, discardPile;
     Button NTB;
+    ReturnCardButton RCB;
+    EnemyButton EB;
     TurnCounter turnCounter;
     private BaseCard cardInUse;
-    private bool turnStart=true;
+    private bool turnStart=true, enemyTurn;
+    private BaseEnemy enemy;
 }
