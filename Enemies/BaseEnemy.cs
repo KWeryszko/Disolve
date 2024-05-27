@@ -6,7 +6,6 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
 {
     //each enemy needs to be a scene with following children:\\
     //0 - AnimatedSprite2D; 1. - HP2; 2 - Armour; 3 - Attribute(strength); 4 - Attribute(agility); 5 - Attribute(intelligence) 6 - Attribute(AP)
-    //7 - textureprogressbar
     [Signal]
     public delegate void CharacterDiedEventHandler(); 
     public override void _Ready() // override ready in children to set cards
@@ -104,8 +103,17 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         hpBar.Value = getMaxHP();
         hpBar.ShowPercentage = false;
         hpBar.Size = new Vector2(100, 20);
+        StyleBoxFlat fill = GD.Load<StyleBoxFlat>("res://Enemies/PlayerBattleScene/Resources/HpBarFill.tres");
+        StyleBoxFlat background = GD.Load<StyleBoxFlat>("res://Enemies/PlayerBattleScene/Resources/HpBarBackground.tres");
+        hpBar.AddThemeStyleboxOverride("fill", fill);
+        hpBar.AddThemeStyleboxOverride("background", background);
+
         AddChild(hpBar);
         hpBar.AddChild(new Label());
+        hpBar.Size = new Vector2(200, 30);
+        hpBar.GetChild<Label>(0).Position = new Vector2(0, 3); //change to center hp
+        
+
         hpBar.GetChild<Label>(0).Text = "HP: " + getCurrentHP() + "/" + getMaxHP();
 
     }

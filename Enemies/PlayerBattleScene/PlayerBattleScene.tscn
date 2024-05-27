@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ogivwk0yy5pf"]
+[gd_scene load_steps=8 format=3 uid="uid://ogivwk0yy5pf"]
 
 [ext_resource type="Script" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.cs" id="1_dawc8"]
 [ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="2_js3pf"]
@@ -21,19 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_sd2fk"]
-offsets = PackedFloat32Array(0.988636, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ck4ig"]
-gradient = SubResource("Gradient_sd2fk")
-
-[sub_resource type="Gradient" id="Gradient_8itqq"]
-offsets = PackedFloat32Array(0.363636, 1)
-colors = PackedColorArray(0.745098, 0.25098, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_13ypn"]
-gradient = SubResource("Gradient_8itqq")
-
 [node name="PlayerBattleScene" type="Node2D"]
 script = ExtResource("1_dawc8")
 
@@ -54,9 +41,3 @@ StartingHealth = 100
 [node name="Int" parent="." instance=ExtResource("4_3gxyw")]
 
 [node name="Ap" parent="." instance=ExtResource("4_3gxyw")]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_under = SubResource("GradientTexture1D_ck4ig")
-texture_progress = SubResource("GradientTexture1D_13ypn")
