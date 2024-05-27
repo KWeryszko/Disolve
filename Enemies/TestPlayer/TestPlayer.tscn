@@ -1,0 +1,82 @@
+[gd_scene load_steps=17 format=3 uid="uid://cqp032lq3y6hy"]
+
+[ext_resource type="Script" path="res://Enemies/TestPlayer/TestPlayer.cs" id="1_i6k7l"]
+[ext_resource type="Texture2D" uid="uid://bk8m74cy7tfj6" path="res://Enemies/TestPlayer/Animation/438159056_768443042091472_4707661805596217143_n.png" id="2_y12u8"]
+[ext_resource type="Texture2D" uid="uid://qu66nqmd04dr" path="res://Enemies/TestPlayer/Animation/438171706_402284252802747_1918398080247256134_n.png" id="3_prr73"]
+[ext_resource type="Texture2D" uid="uid://irg5k7vujaly" path="res://Enemies/TestPlayer/Animation/441361293_1862624374201058_2579656103040109482_n.png" id="4_5wio4"]
+[ext_resource type="Texture2D" uid="uid://260ydewy4mvx" path="res://Enemies/TestPlayer/Animation/441366262_796581399098237_4646780185152624767_n.png" id="5_uvrbn"]
+[ext_resource type="Texture2D" uid="uid://by0ky54xduyei" path="res://Enemies/TestPlayer/Animation/441383841_410337238638505_5360647118105461885_n.png" id="6_hy61b"]
+[ext_resource type="Texture2D" uid="uid://mt35j7yt3bs3" path="res://Enemies/TestPlayer/Animation/441413450_3665202953737189_4719632325154875474_n.png" id="7_o5t7f"]
+[ext_resource type="Texture2D" uid="uid://bshlfu0la325a" path="res://Enemies/TestPlayer/Animation/441418814_3726807730916897_476846297117133495_n.png" id="8_dvtoc"]
+[ext_resource type="Texture2D" uid="uid://46jb8qlgl2n1" path="res://Enemies/TestPlayer/Animation/441464546_1140980847141140_7703892994770901084_n.png" id="9_5q56w"]
+[ext_resource type="Texture2D" uid="uid://crkc2ry6sd27c" path="res://Enemies/TestPlayer/Animation/441527933_425915630203725_7113164214080745765_n.png" id="10_5uksf"]
+[ext_resource type="Texture2D" uid="uid://jgfu4rwkbw4x" path="res://Enemies/TestPlayer/Animation/441713406_1171738737345268_7567542537103550967_n.png" id="11_6vlcj"]
+[ext_resource type="Texture2D" uid="uid://ckm6o8bmhkuol" path="res://Enemies/TestPlayer/Animation/441945411_1216911379278444_5872807593481593671_n.png" id="12_c4h61"]
+[ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="13_4ehqv"]
+[ext_resource type="PackedScene" uid="uid://di83323lrkuve" path="res://Armour/Armour.tscn" id="14_u7mom"]
+[ext_resource type="PackedScene" uid="uid://d0rvdt1rg0ybu" path="res://Attribute/Attribute.tscn" id="15_gjjnr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfkmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y12u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_prr73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5wio4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uvrbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hy61b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o5t7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dvtoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5q56w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5uksf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6vlcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c4h61")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="TestPlayer" type="Node2D"]
+script = ExtResource("1_i6k7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 145)
+scale = Vector2(1, 0.995951)
+sprite_frames = SubResource("SpriteFrames_rfkmu")
+
+[node name="Hp2" parent="." instance=ExtResource("13_4ehqv")]
+
+[node name="Armour" parent="." instance=ExtResource("14_u7mom")]
+
+[node name="Attribute" parent="." instance=ExtResource("15_gjjnr")]
+type = 2
+
+[node name="Attribute2" parent="." instance=ExtResource("15_gjjnr")]
+type = 1
+
+[node name="Attribute3" parent="." instance=ExtResource("15_gjjnr")]
+type = 3
+
+[node name="Attribute4" parent="." instance=ExtResource("15_gjjnr")]
+type = 4
