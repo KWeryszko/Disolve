@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqd5pxxispyo3"]
+[gd_scene load_steps=9 format=3 uid="uid://dqd5pxxispyo3"]
 
 [ext_resource type="Script" path="res://BattleScene/BattleScene.cs" id="1_8hd7d"]
 [ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_luk0o"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcbl1t0vx8k08" path="res://BattleScene/ReturnCardButton/ReturnCardButton.tscn" id="5_es87x"]
 [ext_resource type="Script" path="res://BattleScene/EnemyButton.cs" id="6_jl6d7"]
 [ext_resource type="PackedScene" uid="uid://61oqvxojagb5" path="res://Enemies/TesteEnemy/TestEnemy.tscn" id="7_pk5th"]
-[ext_resource type="Script" path="res://BattleScene/HP_label.cs" id="8_emc42"]
 [ext_resource type="PackedScene" uid="uid://ogivwk0yy5pf" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.tscn" id="9_qost3"]
-[ext_resource type="Script" path="res://BattleScene/HP_label2.cs" id="10_hn5ps"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_8hd7d")
@@ -56,21 +54,7 @@ script = ExtResource("6_jl6d7")
 [node name="TestEnemy" parent="." instance=ExtResource("7_pk5th")]
 position = Vector2(933, 256)
 
-[node name="HP_label" type="Label" parent="TestEnemy"]
-offset_left = 73.0
-offset_top = -25.0
-offset_right = 181.0
-offset_bottom = -2.0
-script = ExtResource("8_emc42")
-
 [node name="PlayerBattleScene" parent="." instance=ExtResource("9_qost3")]
 position = Vector2(27, 288)
-
-[node name="HP_label2" type="Label" parent="PlayerBattleScene"]
-offset_left = 34.0
-offset_top = -31.0
-offset_right = 194.0
-offset_bottom = -8.0
-script = ExtResource("10_hn5ps")
 
 [connection signal="pressed" from="NextTurnButton" to="." method="OnButtonClick"]

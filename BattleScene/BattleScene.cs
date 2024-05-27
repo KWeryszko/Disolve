@@ -10,9 +10,9 @@ public partial class BattleScene : Node2D
         //Add all card from deck (inventory) to draw pile
 
         drawPile.AddCardById(1);
-        drawPile.AddCardById(1);
-        drawPile.AddCardById(1);
-        drawPile.AddCardById(1);
+        drawPile.AddCardById(2);
+        drawPile.AddCardById(2);
+        drawPile.AddCardById(2);
         drawPile.AddCardById(1);
         drawPile.AddCardById(1);
 

@@ -17,4 +17,4 @@ NextCardsID = PackedInt32Array(2)
 SpecialEffectsID = PackedInt32Array()
 SpecialEffectsValue = PackedInt32Array()
 SpecialEffectsLife = PackedInt32Array()
-SpritePath = "Cards/cardLayout.png"
+SpritePath = "res://Cards/CardSprites/rat1.png"

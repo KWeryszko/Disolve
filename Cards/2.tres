@@ -5,16 +5,16 @@
 [resource]
 script = ExtResource("1_bvbua")
 ID = 2
-AttackValue = 0
+AttackValue = 1
 ArmourValue = 0
 HealValue = 0
 ApCost = 0
-Name = ""
-AgilityScaling = 0.0
-StrengthScaling = 0.0
-IntelligenceScaling = 0.0
+Name = "Super attack"
+AgilityScaling = 1.0
+StrengthScaling = 1.0
+IntelligenceScaling = 1.0
 NextCardsID = PackedInt32Array()
 SpecialEffectsID = PackedInt32Array()
 SpecialEffectsValue = PackedInt32Array()
 SpecialEffectsLife = PackedInt32Array()
-SpritePath = ""
+SpritePath = "res://Cards/CardSprites/rat2.png"
