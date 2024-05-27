@@ -1,0 +1,159 @@
+[gd_scene load_steps=36 format=3 uid="uid://bf256vk16qrbh"]
+
+[ext_resource type="Script" path="res://Enemies/GreenSlime/GreenSlime.cs" id="1_5vvbk"]
+[ext_resource type="Texture2D" uid="uid://nt4cgmm5mfg" path="res://Enemies/GreenSlime/Animation/0001.png" id="1_gvode"]
+[ext_resource type="Texture2D" uid="uid://b0wrbikr7ogcp" path="res://Enemies/GreenSlime/Animation/0002.png" id="2_8hv31"]
+[ext_resource type="Texture2D" uid="uid://b40xrhmc5vpr5" path="res://Enemies/GreenSlime/Animation/0003.png" id="3_kaqb6"]
+[ext_resource type="Texture2D" uid="uid://cho4ut53743hi" path="res://Enemies/GreenSlime/Animation/0004.png" id="4_vufaa"]
+[ext_resource type="Texture2D" uid="uid://8ic6ame4d1qv" path="res://Enemies/GreenSlime/Animation/0005.png" id="5_fm04k"]
+[ext_resource type="Texture2D" uid="uid://ctsoft03b6luc" path="res://Enemies/GreenSlime/Animation/0006.png" id="6_tos3i"]
+[ext_resource type="Texture2D" uid="uid://bwg2m7e3k0e1d" path="res://Enemies/GreenSlime/Animation/0007.png" id="7_0bw5q"]
+[ext_resource type="Texture2D" uid="uid://r7hn07fvxr56" path="res://Enemies/GreenSlime/Animation/0008.png" id="8_1518m"]
+[ext_resource type="Texture2D" uid="uid://bkwmo5g37wsg5" path="res://Enemies/GreenSlime/Animation/0009.png" id="9_i0d72"]
+[ext_resource type="Texture2D" uid="uid://cjyogepcvnvqj" path="res://Enemies/GreenSlime/Animation/0010.png" id="10_kgup8"]
+[ext_resource type="Texture2D" uid="uid://k06npqfr0857" path="res://Enemies/GreenSlime/Animation/0011.png" id="11_aytk1"]
+[ext_resource type="Texture2D" uid="uid://ooq6ui766mg6" path="res://Enemies/GreenSlime/Animation/0012.png" id="12_1yhy1"]
+[ext_resource type="Texture2D" uid="uid://ceu15ywsir8pv" path="res://Enemies/GreenSlime/Animation/0013.png" id="13_58wtk"]
+[ext_resource type="Texture2D" uid="uid://cm4awjyvdo243" path="res://Enemies/GreenSlime/Animation/0014.png" id="14_wdl03"]
+[ext_resource type="Texture2D" uid="uid://dh4j4b5o44we2" path="res://Enemies/GreenSlime/Animation/0015.png" id="15_dt2hy"]
+[ext_resource type="Texture2D" uid="uid://bvwspccqfe3i" path="res://Enemies/GreenSlime/Animation/0016.png" id="16_0epem"]
+[ext_resource type="Texture2D" uid="uid://cqoljlbdh5vd6" path="res://Enemies/GreenSlime/Animation/0017.png" id="17_ddwga"]
+[ext_resource type="Texture2D" uid="uid://byiu8mg0ddtbi" path="res://Enemies/GreenSlime/Animation/0018.png" id="18_bxkgm"]
+[ext_resource type="Texture2D" uid="uid://l3ybgyfo118m" path="res://Enemies/GreenSlime/Animation/0019.png" id="19_3ybrr"]
+[ext_resource type="Texture2D" uid="uid://beelsaeama6o5" path="res://Enemies/GreenSlime/Animation/0020.png" id="20_umbnc"]
+[ext_resource type="Texture2D" uid="uid://cq5bwkn3ji0mn" path="res://Enemies/GreenSlime/Animation/0021.png" id="21_v846b"]
+[ext_resource type="Texture2D" uid="uid://dqg8njf2bb6y4" path="res://Enemies/GreenSlime/Animation/0022.png" id="22_bsq6f"]
+[ext_resource type="Texture2D" uid="uid://2mivte7ssmba" path="res://Enemies/GreenSlime/Animation/0023.png" id="23_fr7vh"]
+[ext_resource type="Texture2D" uid="uid://bhc5aswwacxa0" path="res://Enemies/GreenSlime/Animation/0024.png" id="24_0225h"]
+[ext_resource type="Texture2D" uid="uid://cr0hvlohy1fig" path="res://Enemies/GreenSlime/Animation/0025.png" id="25_3odmc"]
+[ext_resource type="Texture2D" uid="uid://ckbhn1m8cyp28" path="res://Enemies/GreenSlime/Animation/0026.png" id="26_i4lgc"]
+[ext_resource type="Texture2D" uid="uid://cx3e1lsruq6cx" path="res://Enemies/GreenSlime/Animation/0027.png" id="27_7eafw"]
+[ext_resource type="Texture2D" uid="uid://3rtgbdhkitgg" path="res://Enemies/GreenSlime/Animation/0028.png" id="28_rdanj"]
+[ext_resource type="Texture2D" uid="uid://b3y87swien3da" path="res://Enemies/GreenSlime/Animation/0029.png" id="29_lm752"]
+[ext_resource type="Texture2D" uid="uid://dxik8btc5cewd" path="res://Enemies/GreenSlime/Animation/0030.png" id="30_luxvk"]
+[ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="31_5810a"]
+[ext_resource type="PackedScene" uid="uid://di83323lrkuve" path="res://Armour/Armour.tscn" id="32_nve13"]
+[ext_resource type="PackedScene" uid="uid://d0rvdt1rg0ybu" path="res://Attribute/Attribute.tscn" id="33_7krga"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vevi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gvode")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8hv31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kaqb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vufaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fm04k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tos3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0bw5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1518m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i0d72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kgup8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_aytk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1yhy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_58wtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wdl03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dt2hy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0epem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ddwga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bxkgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3ybrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_umbnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_v846b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bsq6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_fr7vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_0225h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3odmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_i4lgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_7eafw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_rdanj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lm752")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_luxvk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="GreenSlime" type="Node2D"]
+script = ExtResource("1_5vvbk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 69)
+scale = Vector2(0.411315, 0.411315)
+sprite_frames = SubResource("SpriteFrames_vevi4")
+frame_progress = 0.518864
+
+[node name="Hp2" parent="." instance=ExtResource("31_5810a")]
+
+[node name="Armour" parent="." instance=ExtResource("32_nve13")]
+
+[node name="Attribute" parent="." instance=ExtResource("33_7krga")]
+type = 2
+
+[node name="Attribute2" parent="." instance=ExtResource("33_7krga")]
+type = 1
+
+[node name="Attribute3" parent="." instance=ExtResource("33_7krga")]
+type = 3
+
+[node name="Attribute4" parent="." instance=ExtResource("33_7krga")]
+type = 4
