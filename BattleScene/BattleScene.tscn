@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqd5pxxispyo3"]
+[gd_scene load_steps=12 format=3 uid="uid://dqd5pxxispyo3"]
 
 [ext_resource type="Script" path="res://BattleScene/BattleScene.cs" id="1_8hd7d"]
 [ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_luk0o"]
@@ -9,18 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://61oqvxojagb5" path="res://Enemies/TesteEnemy/TestEnemy.tscn" id="7_pk5th"]
 [ext_resource type="Texture2D" uid="uid://douueundagdf5" path="res://Screenshot_20240527_190713_Copilot.png" id="9_jo7mt"]
 [ext_resource type="PackedScene" uid="uid://ogivwk0yy5pf" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.tscn" id="9_qost3"]
+[ext_resource type="PackedScene" uid="uid://cqp032lq3y6hy" path="res://Enemies/TestPlayer/TestPlayer.tscn" id="10_xibiq"]
+[ext_resource type="PackedScene" uid="uid://bf256vk16qrbh" path="res://Enemies/GreenSlime/GreenSlime.tscn" id="11_asx0d"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_8hd7d")
 
 [node name="Background" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1.0079, 1.00971)
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = -413.0
 offset_right = 1082.0
@@ -74,7 +77,13 @@ script = ExtResource("6_jl6d7")
 [node name="TestEnemy" parent="." instance=ExtResource("7_pk5th")]
 position = Vector2(749, 229)
 
+[node name="TestPlayer" parent="." instance=ExtResource("10_xibiq")]
+position = Vector2(474, 358)
+
 [node name="PlayerBattleScene" parent="." instance=ExtResource("9_qost3")]
 position = Vector2(159, 234)
+
+[node name="GreenSlime" parent="." instance=ExtResource("11_asx0d")]
+position = Vector2(574, 118)
 
 [connection signal="pressed" from="NextTurnButton" to="." method="OnButtonClick"]
