@@ -6,7 +6,7 @@ public partial class BattleScene : Node2D
 {
     public override void _Ready()
     {
-        drawPile = GetChild<CardDeck>(0);
+        drawPile = GetChild<CardDeck>(1);
         //Add all card from deck (inventory) to draw pile
 
         drawPile.AddCardById(1);
@@ -16,24 +16,24 @@ public partial class BattleScene : Node2D
         drawPile.AddCardById(1);
         drawPile.AddCardById(1);
 
-        hand = GetChild<CardDeck>(1);
-        discardPile = GetChild<CardDeck>(2);
-        NTB = GetChild<Button>(3);
-        turnCounter= GetChild<TurnCounter>(4);
+        hand = GetChild<CardDeck>(2);
+        discardPile = GetChild<CardDeck>(3);
+        NTB = GetChild<Button>(4);
+        turnCounter= GetChild<TurnCounter>(5);
         //RCB\\
-        RCB = GetChild<ReturnCardButton>(5);
+        RCB = GetChild<ReturnCardButton>(6);
         RCB.ButtonUp += ReturnCardInUse;
         RCB.Visible = false;
         //EB\\
-        EB = GetChild<EnemyButton>(6);
+        EB = GetChild<EnemyButton>(7);
         EB.ButtonUp += ChooseEnemy;
         EB.Visible = false;
         //ENEMY\\
-        enemy = GetChild<BaseEnemy>(7);
+        enemy = GetChild<BaseEnemy>(8);
         enemy.CharacterDied += DeathsignalReceiver;
 
         //PLAYER\\
-        player = GetChild<BaseEnemy>(8);
+        player = GetChild<BaseEnemy>(9);
         player.CharacterDied += DeathsignalReceiver;
 
         turnStart = true;

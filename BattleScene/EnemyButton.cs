@@ -15,5 +15,5 @@ public partial class EnemyButton : Button
         DrawSetTransform(GlobalPosition = globalPosition);
     }
     public void SetGlobalPosition(Vector2 position) { globalPosition = position; }
-    Vector2 globalPosition = new Vector2(1000, 250);
+    Vector2 globalPosition = new Vector2(800, 250);
 }

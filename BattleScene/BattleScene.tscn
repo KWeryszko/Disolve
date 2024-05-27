@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqd5pxxispyo3"]
+[gd_scene load_steps=10 format=3 uid="uid://dqd5pxxispyo3"]
 
 [ext_resource type="Script" path="res://BattleScene/BattleScene.cs" id="1_8hd7d"]
 [ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_luk0o"]
@@ -7,10 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://dcbl1t0vx8k08" path="res://BattleScene/ReturnCardButton/ReturnCardButton.tscn" id="5_es87x"]
 [ext_resource type="Script" path="res://BattleScene/EnemyButton.cs" id="6_jl6d7"]
 [ext_resource type="PackedScene" uid="uid://61oqvxojagb5" path="res://Enemies/TesteEnemy/TestEnemy.tscn" id="7_pk5th"]
+[ext_resource type="Texture2D" uid="uid://douueundagdf5" path="res://Screenshot_20240527_190713_Copilot.png" id="9_jo7mt"]
 [ext_resource type="PackedScene" uid="uid://ogivwk0yy5pf" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.tscn" id="9_qost3"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_8hd7d")
+
+[node name="Background" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_left = 2.0
+offset_top = -413.0
+offset_right = 1082.0
+offset_bottom = 632.0
+scale = Vector2(1.05721, 1.05721)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("9_jo7mt")
+expand_mode = 1
 
 [node name="DrawPile" parent="." instance=ExtResource("1_luk0o")]
 
@@ -42,19 +62,19 @@ offset_bottom = 260.0
 text = "returnCard"
 
 [node name="EnemyButton" type="Button" parent="."]
-offset_left = 984.0
-offset_top = 266.0
-offset_right = 1108.0
-offset_bottom = 489.0
+offset_left = 778.0
+offset_top = 240.0
+offset_right = 902.0
+offset_bottom = 463.0
 text = "I AM THE ONE
 YOU WARNED
 ME OF"
 script = ExtResource("6_jl6d7")
 
 [node name="TestEnemy" parent="." instance=ExtResource("7_pk5th")]
-position = Vector2(933, 256)
+position = Vector2(749, 229)
 
 [node name="PlayerBattleScene" parent="." instance=ExtResource("9_qost3")]
-position = Vector2(27, 288)
+position = Vector2(159, 234)
 
 [connection signal="pressed" from="NextTurnButton" to="." method="OnButtonClick"]
