@@ -6,4 +6,3 @@
 
 [node name="BaseCard" parent="." instance=ExtResource("1_sh3wh")]
 position = Vector2(339, 155)
-ID = 1
