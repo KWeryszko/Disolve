@@ -98,8 +98,18 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
 
     public void ReceiveCardPlayedByOpponet(int cardID, int[] playerStats = null)    { ReceiveCardPlayedByOpponet(new BaseCard(cardID), playerStats);    }// it just works!
 
-    protected void SetHpBar()   {        HPbar.MaxValue = getMaxHP();  HPbar.Value = getMaxHP();  }
-    public void UpdateHpBar() { HPbar.Value = getCurrentHP(); }
+    protected void SetHpBar()
+    {
+        hpBar.MaxValue = getMaxHP();
+        hpBar.Value = getMaxHP();
+        hpBar.ShowPercentage = false;
+        hpBar.Size = new Vector2(100, 20);
+        AddChild(hpBar);
+        hpBar.AddChild(new Label());
+        hpBar.GetChild<Label>(0).Text = "HP: " + getCurrentHP() + "/" + getMaxHP();
+
+    }
+    public void UpdateHpBar() { hpBar.Value = getCurrentHP(); hpBar.GetChild<Label>(0).Text = "HP: " + getCurrentHP() + "/" + getMaxHP(); }
     protected void ConnectAttributesToChildren()
     {
         sprite = GetChild<AnimatedSprite2D>(0);
@@ -109,7 +119,6 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         agility = GetChild<Attribute>(4);
         intelligence = GetChild<Attribute>(5);
         actionPoints = GetChild<Attribute>(6);
-        HPbar = GetChild<TextureProgressBar>(7);
     }
     protected void CreateNewAttributes()
     {
@@ -120,7 +129,6 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         agility = new();
         intelligence = new();
         actionPoints = new();
-        HPbar = new();
     }
     public int getCurrentHP()//unnecesery if we create label locally
     {
@@ -139,6 +147,6 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
     protected HP2 hp;
     protected Armour armour;
     protected Attribute strength, agility, intelligence, actionPoints;
-    protected TextureProgressBar HPbar;
     protected List<Effects> effects = new(0);
+    private ProgressBar hpBar=new();
 }

@@ -85,6 +85,7 @@ type = 4
 AttributeRegeneration = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
 offset_top = -7.0
 offset_right = 256.0
 offset_bottom = 18.0
