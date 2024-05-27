@@ -30,7 +30,7 @@ public partial class CardDeck : Node2D
         funkcje.Add(Card3ButtonClick);
         funkcje.Add(Card4ButtonClick);
         funkcje.Add(Card5ButtonClick);
-        for (int i = 0; i < 5;i++) { buttons.Add(new CardButton()); buttons[i].ButtonUp += funkcje[i]; }
+        for (int i = 0; i < 5;i++) { buttons.Add(new CardButton()); buttons[i].ButtonUp += funkcje[i]; buttons[i].Flat = true; }//flat truns off shade of button
     }
     public void AddCardById(int id)
     {

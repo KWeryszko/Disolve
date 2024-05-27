@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://qn5bhgy0qptj"]
+[gd_scene load_steps=5 format=3 uid="uid://qn5bhgy0qptj"]
 
 [ext_resource type="Script" path="res://Cards/BaseCard.cs" id="1_l5to8"]
 [ext_resource type="Texture2D" uid="uid://cbbok58w3c21j" path="res://Cards/cardLayout.png" id="2_d01fd"]
 [ext_resource type="Script" path="res://Cards/name.cs" id="3_sa4e5"]
 [ext_resource type="Script" path="res://Cards/AP.cs" id="4_42o01"]
-[ext_resource type="Script" path="res://Cards/ATT.cs" id="5_ddx66"]
 
 [node name="BaseCard" type="Node2D"]
 position = Vector2(152, 92)
@@ -38,10 +37,10 @@ offset_bottom = 132.0
 
 [node name="name" type="Label" parent="CardDisplay/Background"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 158.0
-offset_right = 78.0
-offset_bottom = 181.0
+offset_left = 24.0
+offset_top = 155.0
+offset_right = 71.0
+offset_bottom = 178.0
 text = "Name
 "
 script = ExtResource("3_sa4e5")
@@ -54,12 +53,3 @@ offset_right = 144.0
 offset_bottom = 38.0
 text = "AP"
 script = ExtResource("4_42o01")
-
-[node name="ATT" type="Label" parent="CardDisplay/Background"]
-layout_mode = 0
-offset_left = -47.0
-offset_top = 10.0
-offset_right = -7.0
-offset_bottom = 33.0
-text = "ATT"
-script = ExtResource("5_ddx66")
