@@ -4,7 +4,8 @@ using System;
 public partial class CardButton : Button
 {
     [Signal]
-    public delegate int OnButtonPressedEventHandler(int parentCardIndex);
+    public delegate int OnButtonPressedEventHandler(int parentCardIndex); //not in use maybe
+    
     public override void _Ready()
     {
         Size = new Vector2(100, 150); //ustawic rozmiar karty

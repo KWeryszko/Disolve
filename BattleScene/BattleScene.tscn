@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqd5pxxispyo3"]
+[gd_scene load_steps=11 format=3 uid="uid://dqd5pxxispyo3"]
 
 [ext_resource type="Script" path="res://BattleScene/BattleScene.cs" id="1_8hd7d"]
 [ext_resource type="PackedScene" uid="uid://d0j2mi7kuich1" path="res://CardDeck/CardDeck.tscn" id="1_luk0o"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://BattleScene/EnemyButton.cs" id="6_jl6d7"]
 [ext_resource type="PackedScene" uid="uid://61oqvxojagb5" path="res://Enemies/TesteEnemy/TestEnemy.tscn" id="7_pk5th"]
 [ext_resource type="Texture2D" uid="uid://douueundagdf5" path="res://Screenshot_20240527_190713_Copilot.png" id="9_jo7mt"]
-[ext_resource type="PackedScene" uid="uid://ogivwk0yy5pf" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.tscn" id="9_qost3"]
 [ext_resource type="PackedScene" uid="uid://cqp032lq3y6hy" path="res://Enemies/TestPlayer/TestPlayer.tscn" id="10_xibiq"]
 [ext_resource type="PackedScene" uid="uid://bf256vk16qrbh" path="res://Enemies/GreenSlime/GreenSlime.tscn" id="11_asx0d"]
 
@@ -69,21 +68,17 @@ offset_left = 778.0
 offset_top = 240.0
 offset_right = 902.0
 offset_bottom = 463.0
-text = "I AM THE ONE
-YOU WARNED
-ME OF"
+text = "enemy button"
 script = ExtResource("6_jl6d7")
 
-[node name="TestEnemy" parent="." instance=ExtResource("7_pk5th")]
-position = Vector2(749, 229)
+[node name="GreenSlime" parent="." instance=ExtResource("11_asx0d")]
+position = Vector2(788, 234)
 
 [node name="TestPlayer" parent="." instance=ExtResource("10_xibiq")]
-position = Vector2(474, 358)
+position = Vector2(242, 268)
 
-[node name="PlayerBattleScene" parent="." instance=ExtResource("9_qost3")]
-position = Vector2(159, 234)
-
-[node name="GreenSlime" parent="." instance=ExtResource("11_asx0d")]
-position = Vector2(574, 118)
+[node name="TestEnemy" parent="." instance=ExtResource("7_pk5th")]
+visible = false
+position = Vector2(749, 229)
 
 [connection signal="pressed" from="NextTurnButton" to="." method="OnButtonClick"]
