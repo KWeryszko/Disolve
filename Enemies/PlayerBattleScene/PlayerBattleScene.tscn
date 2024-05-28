@@ -1,25 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ogivwk0yy5pf"]
+[gd_scene load_steps=6 format=3 uid="uid://ogivwk0yy5pf"]
 
 [ext_resource type="Script" path="res://Enemies/PlayerBattleScene/PlayerBattleScene.cs" id="1_dawc8"]
 [ext_resource type="PackedScene" uid="uid://df4klab6xh0sj" path="res://HP2/HP2.tscn" id="2_js3pf"]
-[ext_resource type="Texture2D" uid="uid://g328kesyxufj" path="res://Enemies/PlayerBattleScene/Kapi.png" id="2_ym55w"]
 [ext_resource type="PackedScene" uid="uid://di83323lrkuve" path="res://Armour/Armour.tscn" id="3_a2uv0"]
-[ext_resource type="Texture2D" uid="uid://cigvswrjw6jot" path="res://Enemies/PlayerBattleScene/Kapi2.png" id="3_po4fe"]
 [ext_resource type="PackedScene" uid="uid://d0rvdt1rg0ybu" path="res://Attribute/Attribute.tscn" id="4_3gxyw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ub3sg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ym55w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_po4fe")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="PlayerBattleScene" type="Node2D"]
 script = ExtResource("1_dawc8")
