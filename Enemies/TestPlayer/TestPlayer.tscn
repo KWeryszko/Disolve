@@ -62,8 +62,8 @@ script = ExtResource("1_i6k7l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(36, 145)
-scale = Vector2(1, 0.995951)
 sprite_frames = SubResource("SpriteFrames_rfkmu")
+frame_progress = 0.640515
 
 [node name="Hp2" parent="." instance=ExtResource("13_4ehqv")]
 

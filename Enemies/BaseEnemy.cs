@@ -103,19 +103,19 @@ public abstract partial class BaseEnemy : Node2D //Base class for all enemies
         hpBar.Value = getMaxHP();
         hpBar.ShowPercentage = false;
         hpBar.Size = new Vector2(100, 20);
-        StyleBoxFlat fill = GD.Load<StyleBoxFlat>("res://Enemies/PlayerBattleScene/Resources/HpBarFill.tres");
-        StyleBoxFlat background = GD.Load<StyleBoxFlat>("res://Enemies/PlayerBattleScene/Resources/HpBarBackground.tres");
+        StyleBoxFlat fill = GD.Load<StyleBoxFlat>("res://Enemies/Resources/HpBarFill.tres");
+        StyleBoxFlat background = GD.Load<StyleBoxFlat>("res://Enemies/Resources/HpBarBackground.tres");
         hpBar.AddThemeStyleboxOverride("fill", fill);
         hpBar.AddThemeStyleboxOverride("background", background);
 
         AddChild(hpBar);
         hpBar.AddChild(new Label());
         hpBar.Size = new Vector2(200, 30);
-        hpBar.GetChild<Label>(0).Position = new Vector2(0, 3); //change to center hp
+        hpBar.GetChild<Label>(0).Position = new Vector2(5, 3); //change to center hp
         
 
         hpBar.GetChild<Label>(0).Text = "HP: " + getCurrentHP() + "/" + getMaxHP();
-
+        sprite.Position = new Vector2(80, 120);//sets sprite under hp bar or smth
     }
     public void UpdateHpBar() { hpBar.Value = getCurrentHP(); hpBar.GetChild<Label>(0).Text = "HP: " + getCurrentHP() + "/" + getMaxHP(); }
     protected void ConnectAttributesToChildren()
