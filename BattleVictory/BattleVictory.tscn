@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cjne2pyl4ptvj"]
+
+[node name="BattleVictory" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 318.0
+offset_top = 187.0
+offset_right = 852.0
+offset_bottom = 210.0
+text = "Wygrales Sigmo, jestes wielki, pewnie podnosisz na klate 100 na serie"

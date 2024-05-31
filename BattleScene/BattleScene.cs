@@ -30,11 +30,11 @@ public partial class BattleScene : Node2D
         EB.Visible = false;
         //ENEMY\\
         enemy = GetChild<BaseEnemy>(8);
-        enemy.CharacterDied += DeathsignalReceiver;
+        enemy.CharacterDied += DeathsignalReceiverEnemy;
 
         //PLAYER\\
         player = GetChild<BaseEnemy>(9);
-        player.CharacterDied += DeathsignalReceiver;
+        player.CharacterDied += DeathsignalReceiverPlayer;
 
         turnStart = true;
         turnCounter.AddToCounter();
@@ -45,39 +45,43 @@ public partial class BattleScene : Node2D
         
         if (turnStart)
         {
-            for (int i = 0; i < 5; i++)         //nie zakladamy ze gracz bedzie mial mniej niz 5 kart
-            {
-                if (!drawPile.IsEmpty())
-                {
-                    hand.AddCard(drawPile.TransferCard(drawPile.getCards().Count-1));
-                }
-                else 
-                {
-                    while (!discardPile.IsEmpty())
-                    {
-                        drawPile.AddCard(discardPile.TransferCard(discardPile.getCards().Count-1));
-                    }
-                    drawPile.Shuffle(100);
-                    hand.AddCard(drawPile.TransferCard(drawPile.getCards().Count - 1));
-                }
-            }
+            DrawCards();
             hand.ShowCards(hand.getCards());
             turnStart = false;
         }
         if (enemyTurn)
         {
-            
-            
-            GD.Print("TURA WROGA panstwa podziemnego");
-            GD.Print(enemy.ChooseCardToPlayC().Stats.ID);
-            player.ReceiveCardPlayedByOpponet(enemy.ChooseCardToPlayC(), enemy.getAttributes());
-            turnStart = true;
-            turnCounter.AddToCounter(); //maybe moove to if(turnstart)
-            enemyTurn = false;
-        }//placeholder
+            EnemyTurn();           
+        }
+        if (Input.IsActionJustPressed("LeftMouseClick") && turnEnd)
+        {
 
+            RemoveChild(cardInUse);
+            player.ReceiveCardPlayedByOpponet(cardInUse, enemy.getAttributes());
+            NTB.Visible = true;
+            turnEnd = false;
+            turnStart = true;
+        };//Waits until player is able to read text on the card played by enemy
         //jezeli nacisniemy guzik konczy sie tura, wszystkie karty ida do DSP
 
+    }
+    private void EnemyTurn()
+    {
+        BaseCard temp = enemy.ChooseCardToPlayC();
+        this.cardInUse = temp;
+        AddChild(cardInUse);
+        int damage =
+             (int)(temp.Stats.AttackValue * temp.Stats.StrengthScaling * enemy.getAttributes()[0]) +
+            +(int)(temp.Stats.AttackValue * temp.Stats.AgilityScaling * enemy.getAttributes()[1]) +
+            +(int)(temp.Stats.AttackValue * temp.Stats.IntelligenceScaling * enemy.getAttributes()[2]);
+        cardInUse.UpdateVisibleStats(damage);
+        cardInUse.SetGlobalPosition(new Vector2((1152 / 2) - 50, 100));
+        NTB.Visible=false;       
+
+        
+        turnCounter.AddToCounter(); //maybe moove to if(turnstart)
+        enemyTurn = false;
+        turnEnd= true;
     }
     private void OnButtonClick()  //next turn\\
     {
@@ -136,9 +140,34 @@ public partial class BattleScene : Node2D
         //turning the buttons back on\\
         hand.ActivateSelectButtons(handButtonBuffer);
     }
-    public void DeathsignalReceiver()
+    private void DrawCards()
+    {
+        for (int i = 0; i < 5; i++)         //nie zakladamy ze gracz bedzie mial mniej niz 5 kart
+        {
+            if (!drawPile.IsEmpty())
+            {
+                hand.AddCard(drawPile.TransferCard(drawPile.getCards().Count - 1));
+            }
+            else
+            {
+                while (!discardPile.IsEmpty())
+                {
+                    drawPile.AddCard(discardPile.TransferCard(discardPile.getCards().Count - 1));
+                }
+                drawPile.Shuffle(100);
+                hand.AddCard(drawPile.TransferCard(drawPile.getCards().Count - 1));
+            }
+        }
+    }
+    public void DeathsignalReceiverPlayer()
     {
         GD.Print("Zostalo mi odebrane jedyne co dla mnie istotne");
+        GetTree().ChangeSceneToFile("res://GameOverScene/GameOverScene.tscn");
+    }
+    public void DeathsignalReceiverEnemy()
+    {
+        GD.Print("Zostalo mi odebrane jedyne co dla mnie istotne");
+        GetTree().ChangeSceneToFile("res://BattleVictory/BattleVictory.tscn");
     }
 
     CardDeck drawPile, hand, discardPile;
@@ -147,7 +176,7 @@ public partial class BattleScene : Node2D
     EnemyButton EB;
     TurnCounter turnCounter;
     private BaseCard cardInUse;
-    private bool turnStart=true, enemyTurn;
+    private bool turnStart=true, enemyTurn, turnEnd=false;
     private BaseEnemy enemy, player;
     private int[] handButtonBuffer;
 }
